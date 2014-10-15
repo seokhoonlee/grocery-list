@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="msapplication-tap-highlight" content="no">
+
+  <title>Grocery List</title>
+    
+  <link rel="stylesheet" href="css/chui-ios-3.5.2.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/jquery-2.0.3.js"></script>
+  <script src="js/chui-3.5.2.js"></script>
+  <script src="js/main.js"></script>
+</head>
+<body>
+
+<!-- global nav -->
+<nav id="global-nav"></nav>
+
+<!-- home -->
+<!-- js line 72: show counter of remaining item -->
+<nav class="current">
+  <h1>Grocery List</h1>
+</nav>
+<article id="home" class="navigable">
+  <section>
+    <ul class="list select">
+      <li data-goto="remaining" class="comp"> 
+        <div>
+          <h3>Remaining Item</h3>
+        </div>
+        <aside>
+          <span class='counter' id="remaining_counter"></span>
+        </aside>
+      </li>
+      <li data-goto="purchased" class="comp">
+        <div>
+          <h3>Purchased Item</h3>
+        </div>
+        <aside>
+          <span class='counter' id="purchased_counter"></span>
+        </aside>
+      </li>
+      <li data-goto="item_add" class="nav">
+        <h3>Add Item</h3>
+      </li>
+      <li data-goto="overview" class="nav">
+        <h3>Overview</h3>
+      </li>
+    </ul>
+  </section>
+</article>
+
+<!-- remaining item -->
+<!-- js line 3-16: add list items dynamically -->
+<!-- js line 18-28: link list items to view page -->
+<!-- js line 64-66: back button to go home -->
+<nav class="next">
+  <a class='button back'>Back</a>
+  <h1>Remaining Item</h1>
+  <!-- <a class="button" id="to_purchased">Purchased</a> -->
+</nav>
+<article id="remaining" class="navigable">
+  <section>
+    <ul class="list select" id="remaining_list">
+      
+    </ul>
+  </section>
+</article>
+
+<!-- purchased item -->
+<!-- js line 74-100: copied from remaining -->
+<nav class="next">
+  <a class='button back'>Back</a>
+  <h1>Purchased Item</h1>
+</nav>
+<article id="purchased" class="navigable">
+  <section>
+    <ul class="list select" id="purchased_list">
+      
+    </ul>
+  </section>
+</article>
+
+<!-- view remaining item -->
+<!-- js line 60-62: back button to go remaining -->
+<nav class='next'>
+  <a class='button back'>Back</a>
+  <h1>View Item</h1>
+  <a class='button' id="purchase_button">Purchase</a>
+</nav>
+<article id="remaining_item_view" class="next" data-id="">
+  <section>
+    <ul class='list' id="remaining_view_list">
+      <li>
+        <div id="remaining_title">
+          <h3 class='item_title'>Template </h3> 
+        </div>
+        <div id="remaining_content">
+          <p class='item_content'>
+            SimpleNote is built with ChocolateChip-UI.
+          </p>
+        </div>
+      </li>
+    </ul>
+  </section>
+</article>
+
+<!-- view purchased item -->
+<nav class='next'>
+  <a class='button back'>Back</a>
+  <h1>View Item</h1>
+</nav>
+<article id="purchased_item_view" class="next" data-id="">
+  <section>
+  <ul class='list'>
+    <li>
+      <div id="purchased_title">
+        <h3 class='item_title'>Template </h3> 
+      </div>
+      <div id="purchased_content">
+        <p class='item_content'>
+          SimpleNote is built with ChocolateChip-UI.
+        </p>
+      </div>
+    </li>
+  </ul>
+  </section>
+</article>
+
+<!-- add item -->
+<!-- js line 30-57: save item dynamically -->
+<nav class='next'>
+  <a class='button back'>Back</a>
+  <h1>Add Item</h1>
+  <a class='button' id="item_save">Save</a>
+</nav>
+<article id="item_add" class="next" data-id="">
+  <section>
+    <ul class='list' ui-implements='form'>
+      <li>
+      <input type="text" id='item_title' placeholder="Item name" required>
+      </li>
+    </ul>
+    <ul class='list' ui-implements='form'>
+      <li>
+        <textarea id='item_content' placeholder="Description" rows="30" required></textarea>
+      </li>
+    </ul>
+  </section>
+</article>
+
+<!-- added item -->
+<!-- js line 60-62: back button to go home -->
+<nav class='next'>
+  <a class='button backTo' id="goto_home">Back</a>
+  <h1>View Added Item</h1>
+</nav>
+<article id="added_item_view" class="next" data-id="">
+  <section>
+  <ul class='list'>
+    <li>
+      <div id="added_title">
+        <h3 class='item_title'>Template </h3> 
+      </div>
+      <div id="added_content">
+        <p class='item_content'>
+          SimpleNote is built with ChocolateChip-UI.
+        </p>
+      </div>
+    </li>
+  </ul>
+  </section>
+</article>
+
+<!-- overview -->
+<!-- js line 68-70: panel toggle to work -->
+<!-- js line 132-140: toggle nav bar color -->
+<nav class='next'>
+  <a class='button back'>Back</a>
+  <h1>Overview</h1>
+</nav>
+<article id="overview" class="next" data-id="">
+  <section>
+    <div class='horizontal centered'>
+      <div class='segmented'>
+        <a class='button'>Remaining</a>
+        <a class='button'>Purchased</a>
+        <a class='button'>Setting</a>
+      </div>
+    </div>
+    <div id="toggle-panels">
+      <div>
+        <ul class="list" id="remaining_panel">
+          
+        </ul>
+      </div>
+      <div>
+        <ul class='list' id="purchased_panel">
+
+        </ul>
+      </div>
+      <div>
+        <ul class='list'>
+          <li class='comp'>
+            <div><h3>Purchase Complete</h3></div>
+            <aside>
+              <span class="switch off" id="complete_switch">
+                <input type="checkbox" value="Purchase Complete" name="comeplete_switch">
+              </span>
+            </aside>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</article>

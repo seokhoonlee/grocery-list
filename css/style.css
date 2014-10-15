@@ -1,0 +1,20 @@
+.list input {
+	width: 100%;
+}
+
+.list textarea {
+	width: 100%;
+	font-size: 16px;
+}
+
+#remaining_panel > li.nav::after {
+	display: none;
+}
+
+#purchased_panel > li.nav::after {
+	display: none;
+}
+
+#total_panel > li.nav::after {
+	display: none;
+}
